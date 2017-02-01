@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PersonSearch.Services;
 
 namespace PersonSearch
 {
@@ -29,6 +30,9 @@ namespace PersonSearch
         {
             // Add framework services.
             services.AddMvc();
+
+            //Inject dependencies
+            services.AddTransient<IPersonService,PersonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
