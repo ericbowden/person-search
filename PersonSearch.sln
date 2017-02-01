@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5FD19B87-A32A-4FAE-9343-CE966E7CE92B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{212257AB-2772-4C89-B6CE-DB4A7C937790}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonSearch", "src\PersonSearch\PersonSearch.xproj", "{DC915D09-20DA-4466-9144-B565E9DD18B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC915D09-20DA-4466-9144-B565E9DD18B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC915D09-20DA-4466-9144-B565E9DD18B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC915D09-20DA-4466-9144-B565E9DD18B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC915D09-20DA-4466-9144-B565E9DD18B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC915D09-20DA-4466-9144-B565E9DD18B7} = {5FD19B87-A32A-4FAE-9343-CE966E7CE92B}
+	EndGlobalSection
+EndGlobal
