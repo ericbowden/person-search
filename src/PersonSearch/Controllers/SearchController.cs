@@ -25,6 +25,5 @@ namespace PersonSearch.Controllers
             var persons = _personService.SearchForPerson(name);
             return Ok(persons);
         }
-
     }
 }

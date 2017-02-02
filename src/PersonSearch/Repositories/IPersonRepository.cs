@@ -9,9 +9,9 @@ namespace PersonSearch.Repositories
     public interface IPersonRepository
     {
         IQueryable<PersonDto> List();
-        PersonDto Get(int id);
+        PersonDto Get(string id);
         bool Create(PersonDto item);
-        bool Delete(int id);
+        bool Delete(string id);
         bool SaveChanges();
     }
 }

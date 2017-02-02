@@ -23,8 +23,13 @@ namespace PersonSearch.Services
 
             return persons.Select(p => new PersonModel
             {
+                Id = p.Id,
                 FirstName = p.FirstName,
-                LastName = p.LastName
+                LastName = p.LastName,
+                UserName = p.UserName,
+                Phone = p.Phone,
+                Picture = p.Picture,
+                Address = p.Address
             }).ToList();
         }
     }
