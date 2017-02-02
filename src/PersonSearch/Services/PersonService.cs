@@ -32,5 +32,18 @@ namespace PersonSearch.Services
                 Address = p.Address
             }).ToList();
         }
+
+        public bool AddPerson(PersonModel person)
+        {
+            return _personRepository.Create(new PersonDto
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Address = person.Address,
+                Phone = person.Phone,
+                Picture = person.Picture,
+                UserName = person.UserName
+            });
+        }
     }
 }

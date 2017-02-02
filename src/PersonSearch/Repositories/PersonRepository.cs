@@ -46,7 +46,7 @@ namespace PersonSearch.Repositories
                     {
                         _repo.Add(new PersonDto
                         {
-                            Id = person.IdInfo["value"],
+                            Id = Guid.NewGuid().ToString(),
                             FirstName = person.NameInfo["first"],
                             LastName = person.NameInfo["last"],
                             UserName = person.LoginInfo["username"],
@@ -85,11 +85,12 @@ namespace PersonSearch.Repositories
             }
         }
 
-        public bool Create(PersonDto item)
+        public bool Create(PersonDto person)
         {
             try
             {
-                _repo.Add(item);
+                person.Id = Guid.NewGuid().ToString();
+                _repo.Add(person);
                 return true;
             }
             catch (Exception e)

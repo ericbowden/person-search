@@ -9,5 +9,6 @@ namespace PersonSearch.Services
     public interface IPersonService 
     {
         List<PersonModel> SearchForPerson(string name);
+        bool AddPerson(PersonModel person);
     }
 }

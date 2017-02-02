@@ -10,7 +10,7 @@ namespace PersonSearch.Repositories
     {
         IQueryable<PersonDto> List();
         PersonDto Get(string id);
-        bool Create(PersonDto item);
+        bool Create(PersonDto person);
         bool Delete(string id);
         bool SaveChanges();
     }
