@@ -20,15 +20,16 @@ namespace PersonSearch.Controllers
         }
 
         [HttpGet]
-        [Route("search")]
-        public IActionResult Search(string name)
+        public IActionResult Search(string q)
         {
-            var persons = _personService.SearchForPerson(name);
+            //force the query to be an empty string if it's null
+            q = q ?? "";
+
+            var persons = _personService.SearchForPerson(q);
             return Ok(persons);
         }
 
-        [HttpGet]
-        [Route("add")]
+        [HttpPost]
         public IActionResult AddPerson()
         {
             var person = new PersonModel

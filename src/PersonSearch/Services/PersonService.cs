@@ -17,20 +17,33 @@ namespace PersonSearch.Services
             _personRepository = personRepository;
         }
 
-        public List<PersonModel> SearchForPerson(string name)
+        public List<PersonModel> SearchForPerson(string searchString = "", int take = 5)
         {
-            var persons = _personRepository.List();
+            var searchStringLowered = searchString.ToLower();
+            var personsQueryable = _personRepository.List();
 
-            return persons.Select(p => new PersonModel
+            //Since we are working with an IQueryable the SQL won't get executed until we enumerate it after the Where and Take call.
+            //This means we only get the persons in memory that we want but not all of them.
+            //we want to enumerate the IQueryable here to save a call for the Any() below.
+            var personList = personsQueryable.Where(p => p.FirstName.ToLower().Contains(searchStringLowered) || p.LastName.ToLower().Contains(searchStringLowered))
+                .Take(take).ToList();
+
+            List<PersonModel> result = null;
+            if (personList.Any())
             {
-                Id = p.Id,
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-                UserName = p.UserName,
-                Phone = p.Phone,
-                Picture = p.Picture,
-                Address = p.Address
-            }).ToList();
+                result = personList.Select(p => new PersonModel
+                {
+                    Id = p.Id,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    UserName = p.UserName,
+                    Phone = p.Phone,
+                    Picture = p.Picture,
+                    Address = p.Address
+                }).ToList();
+            }
+
+            return result;
         }
 
         public bool AddPerson(PersonModel person)
