@@ -22,11 +22,14 @@ namespace PersonSearch.Services
             var searchStringLowered = searchString.ToLower();
             var personsQueryable = _personRepository.List();
 
-            //Since we are working with an IQueryable the SQL won't get executed until we enumerate it after the Where and Take call.
-            //This means we only get the persons in memory that we want but not all of them.
-            //we want to enumerate the IQueryable here to save a call for the Any() below.
-            var personList = personsQueryable.Where(p => p.FirstName.ToLower().Contains(searchStringLowered) || p.LastName.ToLower().Contains(searchStringLowered))
-                .Take(take).ToList();
+            //Since we are working with an IQueryable the SQL won't get executed until we enumerate it with ToList().
+            //This means we only get the persons in memory that we want instead of all of them.
+            //we want to enumerate the IQueryable here to save a SQL call for the Any() below and later
+            var personList = personsQueryable
+                .Where(p => p.FirstName.ToLower().Contains(searchStringLowered) || p.LastName.ToLower().Contains(searchStringLowered))
+                .OrderBy(p => p.LastName)
+                .Take(take)
+                .ToList();
 
             List<PersonModel> result = null;
             if (personList.Any())

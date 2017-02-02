@@ -17,7 +17,7 @@ namespace PersonSearch.Repositories
         private string _url = "https://randomuser.me/api";
         private string _urlParameters = "?seed=personsearch&results=100";
 
-        private List<PersonDto> _repo;
+        private readonly List<PersonDto> _repo;
 
         public PersonRepository()
         {
@@ -37,10 +37,7 @@ namespace PersonSearch.Repositories
                 {
                     // Parse the response body. Blocking!
                     var content = response.Content.ReadAsStringAsync().Result;
-                    //var content = response.Content.ReadAsStringAsync().Result;
                     var result = JsonConvert.DeserializeObject<Result>(content);
-
-                    //var result = contentDictionary["results"];
 
                     foreach (var person in result.Persons)
                     {
@@ -63,9 +60,9 @@ namespace PersonSearch.Repositories
             }
         }
 
-        private string GetAddress(Dictionary<string, string> locationInfo)
+        private static string GetAddress(IReadOnlyDictionary<string, string> locationInfo)
         {
-            return Format("{0}, {1}, {2}, {3}", locationInfo["street"], locationInfo["city"], locationInfo["state"],locationInfo["postcode"]);
+            return $"{locationInfo["street"]}, {locationInfo["city"]}, {locationInfo["state"]}, {locationInfo["postcode"]}";
         }
 
         public IQueryable<PersonDto> List()
@@ -79,7 +76,7 @@ namespace PersonSearch.Repositories
             {
                 return _repo.First(p => p.Id == id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -93,7 +90,7 @@ namespace PersonSearch.Repositories
                 _repo.Add(person);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -106,7 +103,7 @@ namespace PersonSearch.Repositories
                 var person = _repo.Single(p => p.Id == id);
                 return _repo.Remove(person);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }          
@@ -117,12 +114,14 @@ namespace PersonSearch.Repositories
             return true;
         }
 
+        // ReSharper disable once ClassNeverInstantiated.Local
         private class Result
         {
             [JsonProperty(PropertyName = "results")]
             public List<Person> Persons { get; set; }
         }
 
+        // ReSharper disable once ClassNeverInstantiated.Local
         private class Person
         {
             [JsonProperty(PropertyName = "id")]
