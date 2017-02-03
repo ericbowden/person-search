@@ -59,7 +59,10 @@ module.exports = function (config) {
 
           { pattern: 'wwwroot/js/systemjs.config.js', included: false, watched: false },
           { pattern: 'wwwroot/js/systemjs.config.extras.js', included: false, watched: false },
-          'wwwroot/lib/karma-test-shim.js', // optionally extend SystemJS mapping e.g., with barrels
+          'karma-test-shim.js', // optionally extend SystemJS mapping e.g., with barrels
+
+          // serve lib files
+          { pattern: 'wwwroot/lib/**/*.js', included: false, watched: true },
 
           // transpiled application & spec code paths loaded via module imports
           { pattern: appBase + '**/*.js', included: false, watched: true },

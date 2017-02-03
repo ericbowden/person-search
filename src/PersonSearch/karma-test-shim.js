@@ -34,32 +34,32 @@ var allSpecFiles = Object.keys(window.__karma__.files)
   .filter(isBuiltFile);
 
 System.config({
-  baseURL: 'base',
+  baseURL: 'base/wwwroot',
   // Extend usual application package list with test folder
   packages: { 'testing': { main: 'index.js', defaultExtension: 'js' } },
 
   // Assume npm: is set in `paths` in systemjs.config
   // Map the angular testing umd bundles
   map: {
-    '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
-    '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
-    '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
-    '@angular/platform-browser/testing': 'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
-    '@angular/platform-browser-dynamic/testing': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
-    '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
-    '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-    '@angular/forms/testing': 'node_modules/@angular/forms/bundles/forms-testing.umd.js',
+      '@angular/core/testing': 'npm:@angular/core/bundles/core-testing.umd.js',
+      '@angular/common/testing': 'npm:@angular/common/bundles/common-testing.umd.js',
+      '@angular/compiler/testing': 'npm:@angular/compiler/bundles/compiler-testing.umd.js',
+      '@angular/platform-browser/testing': 'npm:@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      '@angular/platform-browser-dynamic/testing': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
+      '@angular/router/testing': 'npm:@angular/router/bundles/router-testing.umd.js',
+      '@angular/forms/testing': 'npm:@angular/forms/bundles/forms-testing.umd.js',
   },
 });
 
-System.import('wwwroot/js/systemjs.config.js')
+System.import('js/systemjs.config.js')
   .then(importSystemJsExtras)
   .then(initTestBed)
   .then(initTesting);
 
 /** Optional SystemJS configuration extras. Keep going w/o it */
 function importSystemJsExtras(){
-  return System.import('wwwroot/js/systemjs.config.extras.js')
+  return System.import('js/systemjs.config.extras.js')
   .catch(function(reason) {
     console.log(
       'Warning: System.import could not load the optional "systemjs.config.extras.js". Did you omit it by accident? Continuing without it.'
