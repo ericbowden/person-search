@@ -25,18 +25,13 @@ export class PersonSearchComponent implements OnInit {
 
     persons: Observable<Person[]>;
     private searchTerms = new Subject<string>();
-    people: Person[];
 
     constructor(
         private personService: PersonSearchService
-        //private route: ActivatedRoute,
-        //private location: Location
     ) { }
 
     search(term: string): void {
         this.searchTerms.next(term);
-        var bob = this.personService.getPersons(term)
-            .then(people => this.people = people);
     }
 
     ngOnInit(): void {

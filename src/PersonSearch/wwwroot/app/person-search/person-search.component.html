@@ -1,16 +1,9 @@
-﻿<!--<button (click)="toggleHeading()">Toggle Heading</button>
-<h1 *ngIf="showHeading">Hello Angular</h1>
+﻿<div>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
 
-<h3>List of Heroes</h3>
-
-<div *ngFor="let hero of heroes">{{hero}}</div>-->
-
-<input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
-
-<div>
-<!--    <div *ngFor="let person of people | async"-->
-    <div *ngFor="let person of people"
-         (click)="gotoDetail(hero)" class="search-result">
-        {{person.firstName}} {{person.lastName}}
+    <div>
+        <div *ngFor="let person of persons | async">
+            {{person.firstName}} {{person.lastName}}
+        </div>
     </div>
 </div>
