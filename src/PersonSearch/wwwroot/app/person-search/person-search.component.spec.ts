@@ -1,4 +1,4 @@
-import { AppComponent } from './person-search.component';
+import { PersonSearchComponent } from './person-search.component';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }           from '@angular/platform-browser';
@@ -6,18 +6,18 @@ import { DebugElement } from '@angular/core';
 
 describe('AppComponent', function () {
   let de: DebugElement;
-  let comp: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+  let comp: PersonSearchComponent;
+  let fixture: ComponentFixture<PersonSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppComponent ]
+        declarations: [PersonSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppComponent);
+      fixture = TestBed.createComponent(PersonSearchComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('h1'));
   });

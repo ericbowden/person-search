@@ -15,7 +15,7 @@ namespace PersonSearch.Repositories
     {
 
         private string _url = "https://randomuser.me/api";
-        private string _urlParameters = "?seed=personsearch&results=100";
+        private string _urlParameters = "?seed=personsearch&results=1000";
 
         private readonly List<PersonDto> _repo;
 
