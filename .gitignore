@@ -241,6 +241,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 *.map
-src/PersonSearch/wwwroot/app/*.js
+src/PersonSearch/wwwroot/app/**/*.js
 src/PersonSearch/wwwroot/css/site.min.css
 src/PersonSearch/wwwroot/js/site.min.js
