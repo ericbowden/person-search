@@ -53,10 +53,7 @@ namespace PersonSearch
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                ServeUnknownFileTypes = true
-            });
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {

@@ -15,7 +15,7 @@
     ],
     // Optionally specify minification options
     "minify": {
-      "enabled": false, //gulp handles this for us
+      "enabled": true,
       "renameLocals": true
     },
     // Optinally generate .map file

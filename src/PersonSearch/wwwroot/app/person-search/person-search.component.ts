@@ -19,7 +19,7 @@ import { Person } from './person';
     moduleId: module.id,
     selector: 'people-search-app',
     templateUrl: './person-search.component.html',
-    styleUrls: ['./person-search.component.less'],
+    styleUrls: ['./person-search.component.css'],
     providers: [PersonSearchService]
 })
 export class PersonSearchComponent implements OnInit {

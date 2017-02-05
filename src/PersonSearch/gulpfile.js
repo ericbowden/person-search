@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='clean, min' Clean='clean' ProjectOpened='copyNpmDependenciesOnly' />
+﻿/// <binding BeforeBuild='min' Clean='clean' ProjectOpened='copyNpmDependenciesOnly' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -6,10 +6,14 @@ var gulp = require("gulp"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify"),
+    less = require('gulp-less'),
+    path = require('path'),
+    watch = require('gulp-watch'),
     gnf = require("gulp-npm-files");
 
 var webroot = "./wwwroot/";
 var nodeRoot = "./node_modules/";
+
 
 var paths = {
     js: webroot + "js/**/*.js",
@@ -17,7 +21,9 @@ var paths = {
     css: webroot + "css/**/*.css",
     minCss: webroot + "css/**/*.min.css",
     concatJsDest: webroot + "js/site.min.js",
-    concatCssDest: webroot + "css/site.min.css"
+    concatCssDest: webroot + "css/site.min.css",
+
+    lessFiles: webroot + "app/**/*.less"
 };
 
 gulp.task("clean:js", function (cb) {
@@ -44,8 +50,18 @@ gulp.task("min:css", function () {
         .pipe(gulp.dest("."));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min", ["compile-less", "min:js", "min:css"]);
 
 gulp.task('copyNpmDependenciesOnly', function () {
     gulp.src(gnf(), { base: './' }).pipe(gulp.dest(webroot+"/lib"));
+});
+
+gulp.task('compile-less', function () {
+    return gulp.src(paths.lessFiles)
+      .pipe(less())
+      .pipe(gulp.dest(webroot+'app/.'));
+});
+
+gulp.task('watch-less', function () {
+    return gulp.watch(paths.lessFiles, ['compile-less']);
 });
