@@ -2,8 +2,25 @@
     <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
 
     <div>
-        <div *ngFor="let person of persons | async">
-            {{person.firstName}} {{person.lastName}}
+        <div class="person-search-container" *ngFor="let person of persons | async">
+
+            <img src="{{person.picture}}"/>
+
+            <div>
+                Username: {{person.userName}}
+            </div>
+
+            <div>
+                Name: {{person.firstName}} {{person.lastName}}
+            </div>
+            <div>
+                Phone: {{person.phone}}
+            </div>
+
+            <div>
+                Address: {{person.address}}
+            </div>
+            
         </div>
     </div>
 </div>

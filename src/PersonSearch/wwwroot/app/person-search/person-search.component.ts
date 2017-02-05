@@ -19,6 +19,7 @@ import { Person } from './person';
     moduleId: module.id,
     selector: 'people-search-app',
     templateUrl: './person-search.component.html',
+    styleUrls: ['./person-search.component.css'],
     providers: [PersonSearchService]
 })
 export class PersonSearchComponent implements OnInit {
@@ -38,7 +39,7 @@ export class PersonSearchComponent implements OnInit {
         this.persons = this.searchTerms
             .debounceTime(300)        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => term   // switch to new observable each time the term changes
+            .switchMap(term => term   // switch to new observable each time the term changes, unsubscribing from previous calls
                 // return the http search observable
                 ? this.personService.search(term)
                 // or the observable of empty persons if there was no search term
