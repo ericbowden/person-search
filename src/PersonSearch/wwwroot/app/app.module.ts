@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { PersonSearchComponent } from './person-search/person-search.component';
+import { PersonAddComponent } from './person-add/person-add.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import { PersonSearchComponent } from './person-search/person-search.component';
         FormsModule,
         HttpModule
     ],
-    declarations: [PersonSearchComponent],
+    declarations: [ PersonSearchComponent, PersonAddComponent],
     bootstrap: [ PersonSearchComponent ]
 })
 export class AppModule { }

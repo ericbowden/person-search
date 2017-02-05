@@ -24,7 +24,7 @@ import { Person } from './person';
 })
 export class PersonSearchComponent implements OnInit {
 
-    persons: Observable<Person[]>;
+    private persons: Observable<Person[]>;
     private searchTerms = new Subject<string>();
 
     constructor(

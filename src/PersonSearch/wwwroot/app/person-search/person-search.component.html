@@ -3,8 +3,9 @@
     <div class="title-container">
         <div class="title">Person Search</div>
         <input #searchBox class="search-box" (keyup)="search(searchBox.value)"/>
+        <person-add class="col-xs-12 col-sm-2"></person-add>
     </div>
-    
+
 
     <div class="row" *ngFor="let person of persons | async">
 

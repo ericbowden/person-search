@@ -1,0 +1,24 @@
+﻿<div class="person-add-container">
+
+    <a class="add-button" (click)="show()">
+        <span class="material-icons">add</span>
+    </a>
+
+    <div class="person-modal" *ngIf="showModal" [@fadeInOut]>
+
+        <div class="app-modal-header">
+            header
+        </div>
+
+        <div class="app-modal-body">
+            Whatever content you like, form fields, anything
+        </div>
+
+        <div class="app-modal-footer">
+            <button type="button" class="btn btn-default" (click)="hide()">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+
+    </div>
+
+</div>
