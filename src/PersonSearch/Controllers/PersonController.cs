@@ -30,18 +30,16 @@ namespace PersonSearch.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPerson()
+        public IActionResult AddPerson(PersonModel person)
         {
-            var person = new PersonModel
+            if (person != null)
             {
-                FirstName = "Bob",
-                LastName = "Bobberson"
-            };
-            var rst = _personService.AddPerson(person);
-            if(rst)
-                return Ok();
-            else
-                return BadRequest();
+                var rst = _personService.AddPerson(person);
+                if (rst)
+                    return Ok();
+            }
+            
+            return BadRequest();
         }
     }
 }
