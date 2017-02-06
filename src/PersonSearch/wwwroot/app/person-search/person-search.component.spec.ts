@@ -4,23 +4,22 @@ import { PersonSearchService } from './person-search.service';
 import { Person } from './person';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-describe('AppComponent',
-    function() {
+describe('PersonSearchComponent',
+    () => {
         let comp: PersonSearchComponent;
         let fixture: ComponentFixture<PersonSearchComponent>;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [
-                    FormsModule,
-                    HttpModule
-                ],
+                    imports: [
+                        FormsModule,
+                        HttpModule
+                    ],
                     declarations: [PersonSearchComponent, PersonAddComponent]
                 })
                 .compileComponents();
@@ -32,7 +31,6 @@ describe('AppComponent',
             var rst = new Observable<Person[]>();
 
             spyOn(comp.personService, "search").and.callFake((term: any) => {
-                console.log('fake called', term);
                 return rst.toPromise();
             });
         });

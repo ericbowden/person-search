@@ -10,6 +10,7 @@
 /// <reference path="app/person-search/person-search.component.js" />
 /// <reference path="app/person-search/person-search.component.spec.js" />
 /// <reference path="app/person-search/person-search.service.js" />
+/// <reference path="app/person-search/person-search.service.spec.js" />
 /// <reference path="js/site.js" />
 /// <reference path="js/systemjs.config.extras.js" />
 /// <reference path="js/systemjs.config.js" />

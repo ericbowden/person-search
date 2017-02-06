@@ -14,7 +14,7 @@ export class PersonSearchService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private searchUrl = './api/person';
 
-    constructor(private http: Http) {}
+    constructor(public http: Http) {}
 
     search(term: string): Observable<Person[]> {
         const url = `${this.searchUrl}?q=${term}`;
