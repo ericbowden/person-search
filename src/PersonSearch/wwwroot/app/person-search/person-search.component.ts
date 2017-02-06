@@ -24,12 +24,12 @@ import { Person } from './person';
 })
 export class PersonSearchComponent implements OnInit {
 
-    private persons: Observable<Person[]>;
-    private searchTerms = new Subject<string>();
-    private showLoadingMask = false;
+    public persons: Observable<Person[]>;
+    public searchTerms = new Subject<string>();
+    public showLoadingMask = false;
 
     constructor(
-        private personService: PersonSearchService
+        public personService: PersonSearchService
     ) { }
 
     search(term: string): void {
