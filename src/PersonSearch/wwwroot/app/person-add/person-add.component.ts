@@ -25,12 +25,12 @@ import { PersonSearchService } from '../person-search/person-search.service';
 })
 export class PersonAddComponent {
 
-    private person: Person;
-    private showModal = false;
-    private showSuccess = false;
-    private showError = false;
+    public person: Person;
+    public showModal = false;
+    public showSuccess = false;
+    public showError = false;
 
-    constructor(private personService: PersonSearchService) {}
+    constructor(public personService: PersonSearchService) {}
 
     show(): void {
         this.person = new Person();

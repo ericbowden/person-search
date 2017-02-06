@@ -6,6 +6,7 @@
 /// <reference path="app/main.js" />
 /// <reference path="app/person.js" />
 /// <reference path="app/person-add/person-add.component.js" />
+/// <reference path="app/person-add/person-add.component.spec.js" />
 /// <reference path="app/person-search/person.js" />
 /// <reference path="app/person-search/person-search.component.js" />
 /// <reference path="app/person-search/person-search.component.spec.js" />
