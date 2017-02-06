@@ -11,7 +11,7 @@
 
     <div class="row" *ngFor="let person of persons | async">
 
-        <img class="image col-xs-12 col-sm-2" src="{{person.picture}}"/>
+        <img class="image col-xs-12 col-sm-2" src="{{person.picture}}" onerror="this.src = './images/default-user.png'" />
 
         <div class="col-xs-12 col-sm-10">
             <div class="info">
