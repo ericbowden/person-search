@@ -26,6 +26,7 @@ export class PersonSearchComponent implements OnInit {
 
     private persons: Observable<Person[]>;
     private searchTerms = new Subject<string>();
+    private showLoadingMask = false;
 
     constructor(
         private personService: PersonSearchService
@@ -39,16 +40,27 @@ export class PersonSearchComponent implements OnInit {
         this.persons = this.searchTerms
             .debounceTime(300)        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
+
             .switchMap(term => term   // switch to new observable each time the term changes, unsubscribing from previous calls
                 // return the http search observable
-                ? this.personService.search(term)
+                ? this.callSearchService(term)
                 // or the observable of empty persons if there was no search term
                 : Observable.of<Person[]>([]))
+
             .catch(error => {
                 // TODO: add real error handling
                 console.log(error);
                 return Observable.of<Person[]>([]);
             });
+
+        this.persons.subscribe(() =>
+            //this timeout simulates loading the data, it should be removed in a production environment
+            setTimeout(() => {this.showLoadingMask = false}, 1500));
+    }
+
+    callSearchService(term: any): Observable<Person[]> {
+        this.showLoadingMask = true;
+        return this.personService.search(term);
     }
 
 }

@@ -5,31 +5,39 @@
         <div class="search-box-container">
             <input #searchBox class="search-box" (keyup)="search(searchBox.value)"/>
             <person-add class=""></person-add>
-        </div>       
+        </div>
     </div>
 
+    <div class="search-results-container">
 
-    <div class="row" *ngFor="let person of persons | async">
+        <div *ngIf="showLoadingMask" class="loading-mask"></div>
 
-        <img class="image col-xs-12 col-sm-2" src="{{person.picture}}" onerror="this.src = './images/default-user.png'" />
+        <div [hidden]="showLoadingMask">
 
-        <div class="col-xs-12 col-sm-10">
-            <div class="info">
-                <div class="username">
-                    <span>Username:</span> {{person.userName}}
-                </div>
+            <div class="row" *ngFor="let person of persons | async">
 
-                <div class="name">
-                    <span>Name:</span> {{person.firstName}} {{person.lastName}}
-                </div>
-                <div class="phone">
-                    <span>Phone:</span> {{person.phone}}
-                </div>
+                <img class="image col-xs-12 col-sm-2" src="{{person.picture}}" onerror="this.src = './images/default-user.png'"/>
 
-                <div class="address">
-                    <span>Address:</span> {{person.address}}
+                <div class="col-xs-12 col-sm-10">
+                    <div class="info">
+                        <div class="username">
+                            <span>Username:</span> {{person.userName}}
+                        </div>
+
+                        <div class="name">
+                            <span>Name:</span> {{person.firstName}} {{person.lastName}}
+                        </div>
+                        <div class="phone">
+                            <span>Phone:</span> {{person.phone}}
+                        </div>
+
+                        <div class="address">
+                            <span>Address:</span> {{person.address}}
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
