@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PersonSearch.Models;
 
 namespace PersonSearch.Services
 {
-    public interface IPersonService 
+    public interface IPersonService
     {
         List<PersonModel> SearchForPerson(string searchString = "", int take = 5);
         bool AddPerson(PersonModel person);
