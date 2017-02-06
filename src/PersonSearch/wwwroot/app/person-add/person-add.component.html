@@ -1,23 +1,20 @@
 ﻿<div class="person-add-container">
 
     <a class="add-button" (click)="show()">
-        <span class="material-icons">add</span>
+        <span class="success" *ngIf="showSuccess" [@fadeInOut]>success</span>
+        <span class="error" *ngIf="showError" [@fadeInOut]>error</span>
+        <span>add</span>
     </a>
 
     <div class="person-modal" *ngIf="showModal" [@fadeInOut]>
 
-        <form>
+        <form (ngSubmit)="onSubmit($event)">
 
             <div class="form-group">
                 <label for="userName">Username:</label>
-                <input type="text" class="form-control" required id="userName"
+                <input type="text" class="form-control" required id="userName" 
+                       pattern=".{5,}" title="5 characters minimum"
                        [(ngModel)]="person.userName" name="userName">
-                <!--
-                #userName="ngModel">
-                <div [hidden]="userName.valid || userName.pristine"
-                     class="alert alert-danger">
-                    Username is required
-                </div>-->
             </div>
 
             <div class="form-group">
@@ -35,6 +32,7 @@
             <div class="form-group">
                 <label for="phone">Phone:</label>
                 <input type="text" class="form-control" required id="phone"
+                       pattern="^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$" title="please enter a valid phone number e.g. 555-555-5555"
                        [(ngModel)]="person.phone" name="phone">
             </div>
 
@@ -50,7 +48,7 @@
                        [(ngModel)]="person.picture" name="picture">
             </div>
 
-            <button type="submit" class="btn btn-success" (click)="save()">Add Person</button>
+            <button type="submit" class="btn btn-success" >Add Person</button>
 
         </form>
 

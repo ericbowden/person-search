@@ -25,9 +25,9 @@ namespace PersonSearch.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPerson(PersonModel person)
+        public IActionResult AddPerson([FromBody]PersonModel person)
         {
-            if (person != null)
+            if (person != null && ModelState.IsValid)
             {
                 var rst = _personService.AddPerson(person);
                 if (rst)

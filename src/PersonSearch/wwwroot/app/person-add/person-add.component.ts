@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit, style, state, animate, transition, trigger } from '@angular/core';
 
 import { Person } from '../person-search/person';
+import { PersonSearchService } from '../person-search/person-search.service';
+
 
 @Component({
     moduleId: module.id,
@@ -25,6 +27,10 @@ export class PersonAddComponent {
 
     private person: Person;
     private showModal = false;
+    private showSuccess = false;
+    private showError = false;
+
+    constructor(private personService: PersonSearchService) {}
 
     show(): void {
         this.person = new Person();
@@ -35,49 +41,24 @@ export class PersonAddComponent {
         this.showModal = false;
     }
 
-   /* ngOnInit() {
-
-        // the short way
-        this.personForm = this.formBuilder.group({
-            name: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
-            address: this.formBuilder.group({
-                street: ['', <any>Validators.required],
-                postcode: ['8000']
-            })
-        });
-
-        // subscribe to form changes  
-        this.subcribeToFormChanges();
-
-        // Update single value
-        (<FormControl>this.personForm.controls['name'])
-            .setValue('John', { onlySelf: true });
-
-        // Update form model
-        // const people = {
-        // 	name: 'Jane',
-        // 	address: {
-        // 		street: 'High street',
-        // 		postcode: '94043'
-        // 	}
-        // };
-
-        // (<FormGroup>this.myForm)
-        //     .setValue(people, { onlySelf: true });
-
+    onSubmit(e: any) {
+        e.preventDefault();
+        this.personService.create(this.person)
+            .then(rst => {
+                if (rst) {
+                    this.hide();
+                    this.showSuccessBtn();
+                }
+            }).catch(() => this.showErrorBtn());
     }
 
-    subcribeToFormChanges() {
-        const myFormStatusChanges$ = this.personForm.statusChanges;
-        const myFormValueChanges$ = this.personForm.valueChanges;
-
-        myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
-        myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
+    showSuccessBtn() {
+        this.showSuccess = true;
+        setTimeout(() => this.showSuccess = false, 2000);
     }
 
-    save(model: Person, isValid: boolean) {
-        this.submitted = true;
-        console.log(model, isValid);
-    }*/
-
+    showErrorBtn() {
+        this.showError = true;
+        setTimeout(() => this.showError = false, 5000);
+    }
 }
