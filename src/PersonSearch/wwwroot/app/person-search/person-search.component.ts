@@ -48,14 +48,13 @@ export class PersonSearchComponent implements OnInit {
                 : Observable.of<Person[]>([]))
 
             .catch(error => {
-                // TODO: add real error handling
                 console.log(error);
                 return Observable.of<Person[]>([]);
             });
 
         this.persons.subscribe(() =>
-            //this timeout simulates loading the data, it should be removed in a production environment
-            setTimeout(() => {this.showLoadingMask = false}, 1500));
+            // this timeout simulates loading the data, it should be removed in a production environment
+            setTimeout(() => { this.showLoadingMask = false; }, 1500));
     }
 
     callSearchService(term: any): Observable<Person[]> {

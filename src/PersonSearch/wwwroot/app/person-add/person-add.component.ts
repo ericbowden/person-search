@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, style, state, animate, transition, trigger } from '@angular/core';
+﻿import { Component, style, animate, transition, trigger } from '@angular/core';
 
 import { Person } from '../person-search/person';
 import { PersonSearchService } from '../person-search/person-search.service';
@@ -10,7 +10,7 @@ import { PersonSearchService } from '../person-search/person-search.service';
     templateUrl: './person-add.component.html',
     styleUrls: ['./person-add.component.css'],
 
-    //Modal animations
+    // Modal animations
     animations: [
         trigger('fadeInOut', [
             transition(':enter', [   // :enter is alias to 'void => *'
