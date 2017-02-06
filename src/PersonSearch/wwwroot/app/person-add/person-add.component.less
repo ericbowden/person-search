@@ -10,8 +10,7 @@
         -ms-user-select: none;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
-        vertical-align: middle;
-        z-index: 1;
+        z-index: 1001;
         transition: .3s ease-out;
 
         width: 56px;
@@ -21,6 +20,7 @@
 
         background-color: #36a7f4;
         border-radius: 50%;
+
 
         &:hover {
             box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
@@ -38,7 +38,35 @@
     }
 
     .person-modal{
-        
+        position: absolute;
+        border-radius: 5px;
+        background: #fff9f9;
+        margin: 5px;
+        padding: 16px;
+        box-shadow: 2px 3px 13px 0px #777;
+        text-align: right;
+
+        width: 225px;
+        right: 0px;
+        z-index: 1000;
+        top: 42px;
+
+         @media (min-width: 1104px) {
+             width: 325px;
+         }
+
+        input {
+            display: inline-block;
+            width: 200px;
+
+            &.ng-valid[required], &.ng-valid.required  {
+                border-left: 5px solid #42A948;
+            }
+            &.ng-invalid:not(form)  {
+                border-left: 5px solid #a94442;
+            }
+        }
+
     }
 }
 

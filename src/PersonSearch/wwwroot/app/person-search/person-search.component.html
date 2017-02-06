@@ -2,8 +2,10 @@
 
     <div class="title-container">
         <div class="title">Person Search</div>
-        <input #searchBox class="search-box" (keyup)="search(searchBox.value)"/>
-        <person-add class="col-xs-12 col-sm-2"></person-add>
+        <div class="search-box-container">
+            <input #searchBox class="search-box" (keyup)="search(searchBox.value)"/>
+            <person-add class=""></person-add>
+        </div>       
     </div>
 
 

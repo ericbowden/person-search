@@ -6,6 +6,7 @@
 
 html {
     overflow-y: scroll;
+    user-select: none;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */

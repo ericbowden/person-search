@@ -1,6 +1,6 @@
-﻿import { Component, style, state, animate, transition, trigger } from '@angular/core';
+﻿import { Component, OnInit, style, state, animate, transition, trigger } from '@angular/core';
 
-import { Person } from './person';
+import { Person } from '../person-search/person';
 
 @Component({
     moduleId: module.id,
@@ -23,9 +23,11 @@ import { Person } from './person';
 })
 export class PersonAddComponent {
 
+    private person: Person;
     private showModal = false;
 
     show(): void {
+        this.person = new Person();
         this.showModal = !this.showModal;
     }
 
@@ -33,5 +35,49 @@ export class PersonAddComponent {
         this.showModal = false;
     }
 
+   /* ngOnInit() {
+
+        // the short way
+        this.personForm = this.formBuilder.group({
+            name: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
+            address: this.formBuilder.group({
+                street: ['', <any>Validators.required],
+                postcode: ['8000']
+            })
+        });
+
+        // subscribe to form changes  
+        this.subcribeToFormChanges();
+
+        // Update single value
+        (<FormControl>this.personForm.controls['name'])
+            .setValue('John', { onlySelf: true });
+
+        // Update form model
+        // const people = {
+        // 	name: 'Jane',
+        // 	address: {
+        // 		street: 'High street',
+        // 		postcode: '94043'
+        // 	}
+        // };
+
+        // (<FormGroup>this.myForm)
+        //     .setValue(people, { onlySelf: true });
+
+    }
+
+    subcribeToFormChanges() {
+        const myFormStatusChanges$ = this.personForm.statusChanges;
+        const myFormValueChanges$ = this.personForm.valueChanges;
+
+        myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
+        myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
+    }
+
+    save(model: Person, isValid: boolean) {
+        this.submitted = true;
+        console.log(model, isValid);
+    }*/
 
 }
